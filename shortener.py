@@ -1,7 +1,11 @@
+import pyshorteners
+
 def shorten_url(url):
-    shortened = url.split('://')[-1][:8]  # Simplified shortening logic
-    return f'{shortened}...'
+    s = pyshorteners.Shortener()
+    short_url = s.tinyurl.short(url)
+    return short_url
 
 # Example usage
 if __name__ == '__main__':
-    print(shorten_url('https://www.example.com/some/long/path'))
+    long_url = 'https://www.example.com'
+    print('Shortened URL:', shorten_url(long_url))
